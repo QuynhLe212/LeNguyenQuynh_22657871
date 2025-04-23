@@ -13,11 +13,15 @@ function App() {
     setStudents([...students, { id: students.length + 1, ...newStudent }]);
   };
 
+  const handleDeleteStudent = (id) => {
+    setStudents(students.filter((student) => student.id !== id));
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Quản lý danh sách sinh viên</h1>
       <AddStudent onAdd={handleAddStudent} />
-      <StudentList students={students} />
+      <StudentList students={students} onDelete={handleDeleteStudent} />
     </div>
   );
 }

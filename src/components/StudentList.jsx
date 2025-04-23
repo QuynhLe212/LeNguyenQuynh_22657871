@@ -1,4 +1,4 @@
-function StudentList({ students }) {
+function StudentList({ students, onDelete }) {
   return (
     <table className="w-full border">
       <thead>
@@ -16,7 +16,10 @@ function StudentList({ students }) {
             <td className="border p-2">{student.class}</td>
             <td className="border p-2">{student.age}</td>
             <td className="border p-2">
-              <button className="bg-red-500 text-white px-2 py-1 rounded">
+              <button
+                onClick={() => onDelete(student.id)}
+                className="bg-red-500 text-white px-2 py-1 rounded"
+              >
                 Xóa
               </button>
             </td>
