@@ -3,6 +3,7 @@ import StudentList from './components/StudentList';
 import AddStudent from './components/AddStudent';
 import EditStudent from './components/EditStudent';
 import SearchStudent from './components/SearchStudent';
+import FilterClass from './components/FilterClass';
 import './index.css';
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   ]);
   const [editingStudent, setEditingStudent] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedClass, setSelectedClass] = useState('');
 
   const handleAddStudent = (newStudent) => {
     setStudents([...students, { id: students.length + 1, ...newStudent }]);
@@ -32,14 +34,17 @@ function App() {
     setEditingStudent(null);
   };
 
-  const filteredStudents = students.filter((student) =>
-    student.name.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  const filteredStudents = students
+    .filter((student) =>
+      student.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .filter((student) => (selectedClass ? student.class === selectedClass : true));
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Quản lý danh sách sinh viên</h1>
       <SearchStudent onSearch={setSearchTerm} />
+      <FilterClass students={students} onFilter={setSelectedClass} />
       <AddStudent onAdd={handleAddStudent} />
       {editingStudent && (
         <EditStudent student={editingStudent} onUpdate={handleUpdateStudent} />
