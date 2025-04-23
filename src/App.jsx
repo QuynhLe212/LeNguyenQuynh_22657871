@@ -2,6 +2,7 @@ import { useState } from 'react';
 import StudentList from './components/StudentList';
 import AddStudent from './components/AddStudent';
 import EditStudent from './components/EditStudent';
+import SearchStudent from './components/SearchStudent';
 import './index.css';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     { id: 2, name: 'Tran Thi B', class: '12B', age: 17 },
   ]);
   const [editingStudent, setEditingStudent] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const handleAddStudent = (newStudent) => {
     setStudents([...students, { id: students.length + 1, ...newStudent }]);
@@ -30,15 +32,20 @@ function App() {
     setEditingStudent(null);
   };
 
+  const filteredStudents = students.filter((student) =>
+    student.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Quản lý danh sách sinh viên</h1>
+      <SearchStudent onSearch={setSearchTerm} />
       <AddStudent onAdd={handleAddStudent} />
       {editingStudent && (
         <EditStudent student={editingStudent} onUpdate={handleUpdateStudent} />
       )}
       <StudentList
-        students={students}
+        students={filteredStudents}
         onDelete={handleDeleteStudent}
         onEdit={handleEditStudent}
       />
