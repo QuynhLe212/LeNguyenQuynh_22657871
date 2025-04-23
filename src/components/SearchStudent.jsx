@@ -4,7 +4,7 @@ function SearchStudent({ onSearch }) {
         type="text"
         onChange={(e) => onSearch(e.target.value)}
         placeholder="Tìm kiếm theo tên"
-        className="border p-2 mb-4 w-full"
+        className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
       />
     );
   }

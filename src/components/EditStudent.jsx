@@ -14,14 +14,14 @@ function EditStudent({ student, onUpdate }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
+    <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
       <input
         type="text"
         name="name"
         value={editedStudent.name}
         onChange={handleInputChange}
         placeholder="Họ tên"
-        className="border p-2 mr-2"
+        className="flex-1 border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
         required
       />
       <input
@@ -30,7 +30,7 @@ function EditStudent({ student, onUpdate }) {
         value={editedStudent.class}
         onChange={handleInputChange}
         placeholder="Lớp"
-        className="border p-2 mr-2"
+        className="flex-1 border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
         required
       />
       <input
@@ -39,10 +39,13 @@ function EditStudent({ student, onUpdate }) {
         value={editedStudent.age}
         onChange={handleInputChange}
         placeholder="Tuổi"
-        className="border p-2 mr-2"
+        className="flex-1 border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
         required
       />
-      <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
+      <button
+        type="submit"
+        className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition"
+      >
         Lưu
       </button>
     </form>

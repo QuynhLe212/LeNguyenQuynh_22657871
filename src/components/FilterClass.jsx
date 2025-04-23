@@ -4,7 +4,7 @@ function FilterClass({ students, onFilter }) {
     return (
       <select
         onChange={(e) => onFilter(e.target.value)}
-        className="border p-2 mb-4"
+        className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
       >
         <option value="">Tất cả lớp</option>
         {classes.map((cls) => (
