@@ -1,35 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import StudentList from './components/StudentList';
+import './index.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [students, setStudents] = useState([
+    { id: 1, name: 'Nguyen Van A', class: '12A', age: 18 },
+    { id: 2, name: 'Tran Thi B', class: '12B', age: 17 },
+  ]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="container mx-auto p-4">
+      <h1 className="text-2xl font-bold mb-4">Quản lý danh sách sinh viên</h1>
+      <StudentList students={students} />
+    </div>
+  );
 }
 
-export default App
+export default App;
